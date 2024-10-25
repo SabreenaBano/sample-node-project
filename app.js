@@ -1,25 +1,16 @@
-/*
+var express=require('express');
+var app=express();
 
-GEREKLİ PAKETLER YÜKLENİYOR...
+var routes=require('./routes/route.js');
 
-*/
-var http = require('http');
-var express = require('express');
+app.set('view engine','ejs');
 
-var app = express();
+app.use(express.static(__dirname + '/public'));
 
-app.set('port', process.env.PORT || 3005); // GİRİŞ PORTU AYARLANDI
-app.set('views', __dirname + '/app/server/views'); // VIEW KLASÖRÜ TANITILDI
-app.set('view engine', 'ejs'); // VIEW ENGINE AYARLANDI
-app.use(express.static(__dirname + '/app/public')); // KULLANICILAR TARAFINDAN ERİŞİLEBİLEN KLASÖR TANIMLANDI
+app.get('/',routes.home);
 
-require('./app/routes')(app); // ROUTE DOSYASI ÇAĞIRILDI
+var port = process.env.PORT || 3000;
 
-/*
-
-HTTP SERVER OLUŞTURULDU
-
-*/
-http.createServer(app).listen(app.get('port'), function(){
-	console.log('Sistem ' + app.get('port') + ' Portu Üzerinde Çalışıyor.');
+var server=app.listen(port,function(req,res){
+    console.log("Catch the action at http://localhost:"+port);
 });

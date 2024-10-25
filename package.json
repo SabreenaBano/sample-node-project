@@ -1,16 +1,15 @@
 {
-  "name": "sample-node-project",
+  "name": "node-express-hello-world",
   "version": "1.0.0",
-  "description": "Sample Node.js Project",
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "author": "Adem Cemil YALCIN",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express":"latest",
-    "ejs":"latest"
+    "ejs": "^2.3.4",
+    "express": "^4.13.3"
   }
 }
