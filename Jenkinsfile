@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     // Use SSH agent for EC2 credentials
-                    sshagent(['SSH_CREDENTIALS']) { // Updated to use the environment variable
+                    sshagent(['ssh-credentials']) { // Updated to use the environment variable
                         // Copy the built application to EC2 using SCP
                         sh """
                         scp -o StrictHostKeyChecking=no -r dist/* ubuntu@${EC2_INSTANCE_IP}:/var/www/html/
