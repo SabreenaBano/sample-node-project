@@ -43,7 +43,7 @@ pipeline {
                     sshagent(['ssh-credentials']) { // Updated to use the environment variable
                         // Copy the built application to EC2 using SCP
                         sh """
-                        scp -o StrictHostKeyChecking=no -r tmp/* ubuntu@${EC2_INSTANCE_IP}:/var/www/html/
+                        scp -o StrictHostKeyChecking=no -r /tmp/* ubuntu@${EC2_INSTANCE_IP}:/var/www/html/
                         """
                         // Restart the Node.js application on EC2
                         sh """
