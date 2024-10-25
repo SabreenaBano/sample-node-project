@@ -48,7 +48,7 @@ pipeline {
                         // Restart the Node.js application on EC2
                         sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@${EC2_INSTANCE_IP} \
-                            'pm2 restart all'
+                            'pm2 start index.js'
                         """
                     }
                 }
