@@ -55,4 +55,25 @@ pipeline {
             }
         }
     }
+<<<<<<< HEAD
+=======
+
+    post {
+        always {
+            // Send email notification
+            script {
+                emailext (
+                    subject: "Jenkins Job - Deployment Completed",
+                    body: "The deployment of your Node.js application to EC2 instance ${EC2_INSTANCE_IP} is completed.",
+                    to: 'sabreena.bano@shellkode.com',
+                    replyTo: 'no-reply@example.com',
+                    from: 'jenkins@example.com',
+                    mimeType: 'text/plain',
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                    attachLog: true
+                )
+            }
+        }
+    }
+>>>>>>> ab7b5f7bd960869876ba318c3e1c8517889486e0
 }
