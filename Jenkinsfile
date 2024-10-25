@@ -28,25 +28,25 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                script {
-                    // Use SSH agent for EC2 credentials
-                    sshagent(['ec2-ssh-credentials']) {
-                        // Copy the built application to EC2 using SCP
-                        sh """
-                        scp -o StrictHostKeyChecking=no -r dist/* ubuntu@${15.206.146.210}:/var/www/html/
-                        """
-                        // Restart the Node.js application on EC2
-                        sh """
-                        ssh -o StrictHostKeyChecking=no ec2-user@${EC2_INSTANCE_IP} \
-                            'pm2 restart all || sudo systemctl restart node-app.service'
-                        """
-                    }
-                }
-            }
-        }
-    }
+#        stage('Deploy') {
+#            steps {
+#                script {
+#                    // Use SSH agent for EC2 credentials
+#                    sshagent(['ec2-ssh-credentials']) {
+#                        // Copy the built application to EC2 using SCP
+#                        sh """
+#                        scp -o StrictHostKeyChecking=no -r dist/* ubuntu@${15.206.146.210}:/var/www/html/
+#                        """
+#                        // Restart the Node.js application on EC2
+#                        sh """
+#                        ssh -o StrictHostKeyChecking=no ec2-user@${EC2_INSTANCE_IP} \
+#                            'pm2 restart all || sudo systemctl restart node-app.service'
+#                        """
+#                    }
+ #               }
+ #           }
+  #      }
+ #   }
     
     post {
         always {
