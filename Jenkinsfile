@@ -72,9 +72,6 @@ pipeline {
                     attachLog: true
                 )
             }
-            
-            // Clean up workspace after the pipeline execution
-            cleanWs()
         }
     }
 }
