@@ -22,7 +22,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh cd 
+                    // Navigate to the project directory
                     sh 'npm install'
                 }
             }
@@ -53,7 +53,12 @@ pipeline {
                     }
                 }
             }
-        }                    
-        cleanWs()
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
     }
 }
