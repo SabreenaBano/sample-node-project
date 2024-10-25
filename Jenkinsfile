@@ -22,9 +22,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Build the Node.js application
+                    sh cd 
                     sh 'npm install'
-                    sh 'npm run build'
                 }
             }
         }
@@ -54,27 +53,6 @@ pipeline {
                     }
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            // Send email notification
-            script {
-                emailext (
-                    subject: "Jenkins Job - Deployment Completed",
-                    body: "The deployment of your Node.js application to EC2 instance ${EC2_INSTANCE_IP} is completed.",
-                    to: 'sabreena.bano@shellkode.com',
-                    replyTo: 'no-reply@example.com',
-                    from: 'jenkins@example.com',
-                    mimeType: 'text/plain',
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                    attachLog: true
-                )
-            }
-            
-            // Clean up workspace after the pipeline execution
-            cleanWs()
         }
     }
 }
