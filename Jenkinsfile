@@ -23,9 +23,7 @@ pipeline {
             steps {
                 script {
                     // Build the Node.js application
-                    sh 'cd /var/lib/jenkins/workspace/pipeline-2'
                     sh 'npm install'
-                    sh 'npm run build'
                 }
             }
         }
